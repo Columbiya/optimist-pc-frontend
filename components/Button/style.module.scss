@@ -1,0 +1,15 @@
+.button {
+    padding: 26px;
+    font-size: 2.5rem;
+    
+    cursor: pointer;
+
+    &.filled {
+        color: #fff;
+        background: linear-gradient(to right, #FC0101, #FF5C00);
+    }
+
+    &.uppercase {
+        text-transform: uppercase;
+    }
+}

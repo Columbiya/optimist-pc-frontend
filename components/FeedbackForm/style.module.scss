@@ -1,0 +1,31 @@
+.form {
+    max-width: 650px;
+    width: 100%;
+    margin: 50px auto;
+
+    & > div {
+        width: 100%;
+
+        &:not(:last-child) {
+            margin-bottom: 30px;
+        }
+    }
+
+    button {
+        width: 100%;
+    }
+
+    .select {
+        font-size: 2rem;
+
+        color: #000;
+
+        input {
+            padding: 26px 0;
+
+            &::placeholder {
+                text-align: center;
+            }
+        }
+    }
+}
