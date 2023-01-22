@@ -56,7 +56,7 @@ export default function Home() {
 const Line: React.FC = () => {
   return (
     <svg width="366" height="1082" viewBox="0 0 366 1082" fill="none" xmlns="http://www.w3.org/2000/svg" className={css.line}>
-      <line x1="2.37105" y1="1.20745" x2="363.371" y2="1081.21" stroke="#D72626" stroke-width="5"/>
+      <line x1="2.37105" y1="1.20745" x2="363.371" y2="1081.21" stroke="#D72626" strokeWidth="5"/>
     </svg>
   )
 }

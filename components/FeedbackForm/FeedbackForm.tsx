@@ -1,5 +1,5 @@
 import { emailValid } from "@/utils/validators"
-import { useCallback } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
 import { OptionProps } from "react-select"
 import Select from "react-select"
@@ -8,7 +8,12 @@ import { Input } from "../Input/Input"
 import css from './style.module.scss'
 import axios from "axios"
 
-const questionOptions = [
+interface SelectOption {
+    value: string
+    label: string
+}
+
+const questionOptions: any = [
     {value: 'сборка', label: 'Сборка ПК'},
     {value: 'совет', label: 'Совет по сборке пк'},
 ]
@@ -21,6 +26,7 @@ interface FormValues {
 
 export const FeedbackForm: React.FC = () => {
     const { register, formState: { errors }, handleSubmit, setValue, setError, reset } = useForm<FormValues>()
+    const [selectValue, setSelectValue] = useState<SelectOption | null>()
 
     const onSubmit = useCallback((values: FormValues) => {
         if (!values.question) {
@@ -37,10 +43,13 @@ export const FeedbackForm: React.FC = () => {
             console.log(e)
         }
 
-
-
         reset()
+        setSelectValue(null)
     }, [])
+
+    useEffect(() => {
+        setValue('question', selectValue ? selectValue?.value: "")
+    }, [selectValue])
 
     return (
         <>
@@ -64,6 +73,7 @@ export const FeedbackForm: React.FC = () => {
                 
                 <Select 
                     className={css.select}
+                    value={selectValue}
                     styles={{
                         placeholder: (baseStyles, state) => ({
                             ...baseStyles,
@@ -76,8 +86,7 @@ export const FeedbackForm: React.FC = () => {
                             background: "#D9D9D9",
                         })
                     }}
-                    required
-                    onChange={op => setValue('question', op ? op.value: '')} 
+                    onChange = {op => setSelectValue(op ? op: undefined)}
                     options={questionOptions} />
 
                 {errors.question && 

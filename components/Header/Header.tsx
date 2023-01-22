@@ -9,7 +9,7 @@ export const Header: React.FC = () => {
     return (
             <header className={css.header}>
                 <Container>
-                    <Link href={ROUTES.HOME}>Logo</Link>
+                    <Link href={ROUTES.HOME} className={css.logo}>Logo</Link>
 
                     <nav className={css.nav}>
                         <Link href={ROUTES.HOME}>Сборка пк</Link>
