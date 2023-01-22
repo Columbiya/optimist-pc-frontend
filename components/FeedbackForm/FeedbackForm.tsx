@@ -36,7 +36,7 @@ export const FeedbackForm: React.FC = () => {
         }
 
         try {
-            axios.post('http://localhost:5000/api/bot-send', {
+            axios.post('https://www.node-react-app.site/api/bot-send', {
                 text: `Клиент ${values.name} оставил заявку с просьбой ${values.question}.\nEmail клиента: ${values.email}`
             })
         } catch(e) {
